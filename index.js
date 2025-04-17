@@ -14,18 +14,11 @@ app.post("/check", async (req, res) => {
   
     try {
       const browser = await puppeteer.launch({
-        headless: true,
-        executablePath: '/opt/render/project/.render/chrome/opt/google/chrome/chrome',
-        args: [
-          '--no-sandbox',
-          '--disable-setuid-sandbox',
-          '--disable-dev-shm-usage',
-          '--disable-accelerated-2d-canvas',
-          '--no-zygote',
-          '--single-process',
-          '--disable-gpu'
-        ]
+        headless: "new",
+        executablePath: "/usr/bin/google-chrome",
+        args: ["--no-sandbox", "--disable-setuid-sandbox"]
       });
+      
       
       const page = await browser.newPage();
   
