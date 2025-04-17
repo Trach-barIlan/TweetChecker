@@ -4,6 +4,10 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/health', (req, res) => {
+  res.send('OK');
+});
+
 app.post("/check", async (req, res) => {
     const { url } = req.body;
     console.log("Checking tweet URL:", url);
