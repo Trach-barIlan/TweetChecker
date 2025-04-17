@@ -13,7 +13,20 @@ app.post("/check", async (req, res) => {
     }
   
     try {
-      const browser = await puppeteer.launch({ headless: "new" });
+      const browser = await puppeteer.launch({
+        headless: true,
+        executablePath: '/opt/render/project/.render/chrome/opt/google/chrome/chrome',
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-accelerated-2d-canvas',
+          '--no-zygote',
+          '--single-process',
+          '--disable-gpu'
+        ]
+      });
+      
       const page = await browser.newPage();
   
       // Set mobile User-Agent to avoid login wall
